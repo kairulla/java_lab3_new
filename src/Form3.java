@@ -1,3 +1,4 @@
+
 public class Form3 extends javax.swing.JFrame {
 
     public Form3() {
@@ -54,11 +55,21 @@ public class Form3 extends javax.swing.JFrame {
         jScrollPane1.setBounds(10, 180, 260, 123);
 
         jButton_random.setText("<html><p align=\"center\">Заполнить таблицу случайными числами<p></html>");
+        jButton_random.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_randomActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_random);
         jButton_random.setBounds(280, 180, 120, 70);
 
         jButton_otvet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otvet.png"))); // NOI18N
         jButton_otvet.setText("Ответ");
+        jButton_otvet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_otvetActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_otvet);
         jButton_otvet.setBounds(280, 260, 120, 34);
 
@@ -75,6 +86,42 @@ public class Form3 extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(411, 330));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton_randomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_randomActionPerformed
+        // Случайные числа
+        int i = 0;
+        while (i < jTable1.getRowCount()) {
+            int j = 0;
+            while (j < jTable1.getColumnCount()) {
+                jTable1.setValueAt(Math.round(Math.random() * 100), i, j);
+                j++;
+            }
+            i++;
+        }
+    }//GEN-LAST:event_jButton_randomActionPerformed
+
+    private void jButton_otvetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_otvetActionPerformed
+        /* инициализация переменных */
+        int i = 1; // 2-я строка, отсчёт от 0
+        int j = 0;
+        int max = Integer.parseInt(jTable1.getValueAt(i, 0).toString());
+        int x = Integer.parseInt(jTable1.getValueAt(2, 0).toString());
+        byte count = 0;
+        /* само задание */
+        while (j < jTable1.getColumnCount()) {
+            if (Integer.parseInt(jTable1.getValueAt(i, j).toString()) == max) {
+                count++;
+            }
+            if (Integer.parseInt(jTable1.getValueAt(i, j).toString()) > max) {
+                max = Integer.parseInt(jTable1.getValueAt(i, j).toString());                
+            }
+            j++;
+        }
+        if (x > max) {
+            
+        }
+        jLabel_otvet.setText(String.valueOf(x));
+    }//GEN-LAST:event_jButton_otvetActionPerformed
 
     /**
      * @param args the command line arguments
