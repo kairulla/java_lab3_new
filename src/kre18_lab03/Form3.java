@@ -1,3 +1,5 @@
+package kre18_lab03;
+
 
 public class Form3 extends javax.swing.JFrame {
 
@@ -23,7 +25,7 @@ public class Form3 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Лабораторная 3");
-        setIconImage(java.awt.Toolkit.getDefaultToolkit().createImage(getClass().getResource("logo.png")));
+        setIconImage(java.awt.Toolkit.getDefaultToolkit().createImage(getClass().getResource("/kre18_lab03/logo.png")));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -63,7 +65,7 @@ public class Form3 extends javax.swing.JFrame {
         getContentPane().add(jButton_random);
         jButton_random.setBounds(280, 180, 120, 70);
 
-        jButton_otvet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/otvet.png"))); // NOI18N
+        jButton_otvet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kre18_lab03/otvet.png"))); // NOI18N
         jButton_otvet.setText("Ответ");
         jButton_otvet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
