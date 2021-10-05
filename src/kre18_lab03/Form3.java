@@ -1,6 +1,5 @@
 package kre18_lab03;
 
-
 public class Form3 extends javax.swing.JFrame {
 
     public Form3() {
@@ -38,17 +37,31 @@ public class Form3 extends javax.swing.JFrame {
         jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"0", "0", "0", "0", "0"},
-                {"0", "0", "0", "0", "0"},
-                {"0", "0", "0", "0", "0"},
-                {"0", "0", "0", "0", "0"}
+                { new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)},
+                { new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0)}
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jTable1.setCellSelectionEnabled(true);
         jTable1.setGridColor(new java.awt.Color(51, 51, 255));
+        jTable1.setMaximumSize(new java.awt.Dimension(75, 120));
         jTable1.setRowHeight(30);
+        jTable1.setSelectionBackground(new java.awt.Color(255, 255, 51));
+        jTable1.setSelectionForeground(new java.awt.Color(51, 51, 255));
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTable1.setShowGrid(true);
         jTable1.setTableHeader(null);
         jScrollPane1.setViewportView(jTable1);
@@ -104,23 +117,31 @@ public class Form3 extends javax.swing.JFrame {
 
     private void jButton_otvetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_otvetActionPerformed
         /* инициализация переменных */
-        int i = 1; // 2-я строка, отсчёт от 0
-        int j = 0;
+        int i = 1; // 2-я строка, отсчёт от 0        
         int max = Integer.parseInt(jTable1.getValueAt(i, 0).toString());
         int x = Integer.parseInt(jTable1.getValueAt(2, 0).toString());
         byte count = 0;
         /* само задание */
+        int j = 0;
         while (j < jTable1.getColumnCount()) {
             if (Integer.parseInt(jTable1.getValueAt(i, j).toString()) == max) {
                 count++;
             }
             if (Integer.parseInt(jTable1.getValueAt(i, j).toString()) > max) {
-                max = Integer.parseInt(jTable1.getValueAt(i, j).toString());                
+                max = Integer.parseInt(jTable1.getValueAt(i, j).toString());
             }
             j++;
         }
-        if (x > max) {
-            
+        if (max > x) {
+            j = 0;
+            while (j < jTable1.getColumnCount()) {
+                if (Integer.parseInt(jTable1.getValueAt(i, j).toString()) == max) {
+                    jTable1.setValueAt(x, i, j);
+                }
+                j++;
+            }
+
+            jTable1.setValueAt(max, 2, 0);
         }
         jLabel_otvet.setText(String.valueOf(x));
     }//GEN-LAST:event_jButton_otvetActionPerformed
