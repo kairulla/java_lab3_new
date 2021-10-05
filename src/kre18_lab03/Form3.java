@@ -113,6 +113,7 @@ public class Form3 extends javax.swing.JFrame {
             }
             i++;
         }
+        jLabel_otvet.setText("");
     }//GEN-LAST:event_jButton_randomActionPerformed
 
     private void jButton_otvetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_otvetActionPerformed
@@ -143,7 +144,7 @@ public class Form3 extends javax.swing.JFrame {
 
             jTable1.setValueAt(max, 2, 0);
         }
-        jLabel_otvet.setText(String.valueOf(x));
+        jLabel_otvet.setText(String.valueOf("<html>\nМакс. элемент 2-й строки = " + max + "<br>\n1-й элемент 3-й строки = " + x + "\n</html>"));
     }//GEN-LAST:event_jButton_otvetActionPerformed
 
     /**
